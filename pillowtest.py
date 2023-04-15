@@ -3,6 +3,16 @@ from PIL import Image
 img = Image.open("img/Python.jpg")
 width = 320
 height = 180
+# 画像サイズを取得　
+width, height = img.size
+
+# 中央を中心としてトリミング　
+left = (width - 640) // 2
+top = (height - 360) // 2
+right = (width + 640) // 2
+bottom = (height + 360) // 2
+cropped_img = img.crop((left, top, right, bottom))
+
 # 各フィルターでリサイズ
 resized_nearest = img.resize((width, height), resample=Image.NEAREST)
 resized_box = img.resize((width, height), resample=Image.BOX)
